@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "privileged-token-stream-redactor"
+version = "1.0.0"
+description = "Privileged Token Stream Redactor"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "TechieGoku2623"}]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "black==24.8.0",
+    "flake8==7.1.1",
+]
+
+[project.scripts]
+privileged-token-stream-redactor = "privileged_token_stream_redactor.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]

@@ -1,3 +1,3 @@
-# Python 3.12 standard library only.
-# Redaction uses the stdlib `re` module. No third-party packages are required.
-# `pip install -r requirements.txt` is the supported install step.
+# Runtime dependencies: none. The engine uses the Python 3.12 standard library.
+# Install the package with: pip install .
+# Development tools: pip install -e ".[dev]"
