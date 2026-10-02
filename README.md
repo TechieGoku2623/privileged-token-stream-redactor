@@ -2,6 +2,11 @@
 
 A high-throughput, low-latency asynchronous engine engineered to resolve privilege banners and direct identifiers in a caller-held text stream by redacting markers that split across chunks and sealing each redaction into an FNV-1a audit chain.
 
+Website: https://github.com/TechieGoku2623/privileged-token-stream-redactor
+
+Topics: `python` `asyncio` `legaltech` `redaction` `privacy` `compliance`
+
+
 ## 🏗️ Systems Architecture & Event Topology
 
 `PrivilegedTokenStreamRedactor` accepts the chunks the caller already holds. `run(records)` appends each chunk under an `asyncio.Lock`, keeps an overlap tail, redacts the committable prefix, and flushes the tail at the end of the batch. The returned dict is JSON-serializable: `redactions`, `audit_fnv`, `chunks`, `split_repairs`, and `redacted`.
@@ -18,6 +23,8 @@ Detection uses the `re` module:
 Each redaction appends an 8-byte audit record, `struct` format `<IHH`: stream offset, original length, and class code. Those bytes are folded into a running 64-bit FNV-1a chain (`audit_fnv`) so a legal hold can detect a tampered trail. The raw match is never written to the log. A chunk longer than the configured maximum (default 65536) raises `EngineKernelException` and does not advance the chunk counter.
 
 ## 📊 Core Visual Walkthrough & Engine Pipeline Flow
+
+![Terminal walkthrough](docs/assets/terminal-walkthrough.gif)
 
 ```
 chunk stream the caller already holds
