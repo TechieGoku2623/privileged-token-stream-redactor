@@ -13,6 +13,14 @@
 | **Website** | https://github.com/TechieGoku2623/privileged-token-stream-redactor |
 | **Topics** | `python` `asyncio` `legaltech` `redaction` `privacy` `compliance` |
 
+## Watch the demo
+
+<p align="center">
+  <img src="docs/demo.gif" alt="Privileged Token Stream Redactor dashboard walkthrough" width="920"/>
+</p>
+
+Play the video: [docs/watch.html](docs/watch.html)
+
 ## The problem this solves
 
 Legal documents arrive in chunks. An email address, a Social Security number, an account number, or a privilege banner split across two chunks misses a scanner that looks at one chunk at a time. Logging the match recreates the leak.
