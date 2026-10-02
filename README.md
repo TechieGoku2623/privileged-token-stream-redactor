@@ -13,6 +13,14 @@
 | **Website** | https://github.com/TechieGoku2623/privileged-token-stream-redactor |
 | **Topics** | `python` `asyncio` `legaltech` `redaction` `privacy` `compliance` |
 
+## The problem this solves
+
+Legal documents arrive in chunks. An email address, a Social Security number, an account number, or a privilege banner split across two chunks misses a scanner that looks at one chunk at a time. Logging the match recreates the leak.
+
+Privileged Token Stream Redactor keeps an overlap tail so a token on a boundary is still seen, rewrites matches to `[PRIVILEGED]` or `[ID]`, and stores an FNV-1a audit hash of what was removed. The raw match is not written to the log. A chunk past the length limit raises. Downstream systems receive text that can be handed to a model or a ticket system.
+
+The control matches the processing-integrity and confidentiality idea associated with SOC 2.
+
 ## Walkthrough
 
 ### How it works
